@@ -17,7 +17,7 @@ namespace ReplyChallenge2021.Classes
             speed = s;
 
             internalScore = valueConnection * speed - valueLatency * latency;
-            bestAntennaScore = 0;
+            bestAntennaScore = -1;
         }
 
         public int positionX { get; set; }
@@ -28,11 +28,24 @@ namespace ReplyChallenge2021.Classes
         public int bestAntennaScore { get; set; }
 
         //metodo che data antenna mi calcola il valore
+        public int ScoreForAntenna(Antenna antenna, int positionX, int positionY) 
+        {
+            var distanza = DistanzaDa(positionX,positionY);
+            var score = 0;
+
+            if (distanza <= antenna.range)
+            {
+                score = this.speed * antenna.speed - this.latency * distanza;
+            }
+
+            return score;
+        }
 
         //ritorna true se building coperto
-
-        //metodo che date x,y e range ritorna building dentro al range
-
+        public bool IsBuilidingCovered()
+        {
+            return bestAntennaScore != -1;
+        }
 
         public int DistanzaDa(int x, int y)
         {
