@@ -49,7 +49,7 @@ namespace ReplyChallenge2021
                 int r1 = 0, c = 0;
                 Int32.TryParse(antenna[0], out r1);
                 Int32.TryParse(antenna[1], out c);
-                antennas.Add(new Antenna(id, r, c, valueRange, valueSpeed));
+                antennas.Add(new Antenna(id, r1, c, valueRange, valueSpeed));
             }
 
             return new City(w, h, r, antennas, buildings);
