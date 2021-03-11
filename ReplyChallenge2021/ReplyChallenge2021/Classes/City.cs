@@ -53,6 +53,12 @@ namespace ReplyChallenge2021.Classes
             return output;
         }
 
+        public bool IsAllBuildingsCovered()
+        {
+            if (buildings.FirstOrDefault(b => b.bestAntennaScore == -1) != null) return false;
+            return true;
+        }
+
         public int AvarageAntennasRange()
         {
             int sum = 0;
