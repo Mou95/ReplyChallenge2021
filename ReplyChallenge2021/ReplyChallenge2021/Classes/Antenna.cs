@@ -30,7 +30,7 @@ namespace ReplyChallenge2021.Classes
 
         // Totale valore di building coperti data la posizione
         // Ritorna score per ogni building coperto, e sommare il valore al totale solo se building.bestValoreAntenna < valore dato dall'antenna per cui sto facendo il calcolo
-        public int CalculateScore(City city, Tuple point, List<Building> buildings)
+        public int CalculateScore(City city, Tuple<int,int,int> point, List<Building> buildings)
         {
             
             int x = point.Item1;
