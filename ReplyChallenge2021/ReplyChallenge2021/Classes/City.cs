@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ReplyChallenge2021.Classes
 {
-    class City
+    public class City
     {
+        
     }
 }
