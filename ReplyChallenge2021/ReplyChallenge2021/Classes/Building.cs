@@ -19,5 +19,11 @@ namespace ReplyChallenge2021.Classes
         public int positionY { get; set; }
         public int latency { get; set; }
         public int speed { get; set; }
+
+
+        public int DistanzaDa(int x, int y)
+        {
+            return Utilities.Utilities.Distanza(x, y, this.positionX, this.positionY);
+        }
     }
 }
