@@ -36,7 +36,20 @@ namespace ReplyChallenge2021.Classes
         {
             List<Building> result = new List<Building>();
 
+            int max = range / 2;
+            int maxX = positionX + max;
+            int minX = positionX - max;
+            int maxY = positionY + max;
+            int minY = positionY - max;
+            result = this.buildings.Where(b => b.positionX <= maxX && b.positionX >= minX && b.positionY <= maxY && b.positionY >= minY).ToList();
 
+            foreach(Building b in result)
+            {
+                int distance = b.DistanzaDa(positionX, positionY);
+                if (distance - range < 0) result.Remove(b);
+            }
+
+            return result;
         }
 
         public int AvarageAntennasRange()
