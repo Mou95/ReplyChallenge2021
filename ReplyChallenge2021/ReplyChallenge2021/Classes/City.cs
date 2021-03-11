@@ -29,7 +29,7 @@ namespace ReplyChallenge2021.Classes
         public int[,] positionAntenne { get; set; }
 
         //calcolo totale punteggio finale -> somma di tutti i  bestscore dei building + reward (con condizione)
-        public int CalculateScore() => reward + buildings.Sum(x => x.bestAntennaScore);
+        public int CalculateScore() => (reward*IsAllBuildingsCovered()) + buildings.Sum(x => x.bestAntennaScore);
 
         //metodo che date x,y e range ritorna building dentro al range
         public List<Building> BuildingInsideRange(int range, int positionX, int positionY)
@@ -53,10 +53,10 @@ namespace ReplyChallenge2021.Classes
             return output;
         }
 
-        public bool IsAllBuildingsCovered()
+        public int IsAllBuildingsCovered()
         {
-            if (buildings.FirstOrDefault(b => b.bestAntennaScore == -1) != null) return false;
-            return true;
+            if (buildings.FirstOrDefault(b => b.bestAntennaScore == -1) != null) return 0;
+            return 1;
         }
 
         public int AvarageAntennasRange()

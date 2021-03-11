@@ -42,9 +42,7 @@ namespace ReplyChallenge2021
                 int bestX = -1;
                 int bestY = -1;
                 int bestScore = -1;
-
-                List<Building> buildings = new List<Building>();
-                foreach (Tuple<int,int,int> point in listOfPointsOrdered)
+                foreach(Tuple<int,int,int> point in listOfPointsOrdered)
                 {
                     List<Building> buildings = city.BuildingInsideRange(av, point.Item1, point.Item2);
                     var singolarScore = antenna.CalculateScore(city, point, buildings);
@@ -64,14 +62,19 @@ namespace ReplyChallenge2021
                 city.positionAntenne[bestX, bestY] = 1;
 
                 //Aggiorno buildings
-                foreach(Building b in buildings)
+                foreach(Building b in city.BuildingInsideRange(av, bestX, bestY))
+                {
+                    var scoreForAntenna = b.ScoreForAntenna(antenna, bestX, bestY);
+                    if (b.bestAntennaScore < scoreForAntenna)
+                    {
+                        b.bestAntennaScore = scoreForAntenna;
+                    }
+                }
             }
 
-
-
-            List<Building> val = city.BuildingInsideRange(av, 11, 7);
-
             int finalScore = city.CalculateScore();
+
+            ReadFile.WriteOutputFile("first", city);
             
         }
     }
