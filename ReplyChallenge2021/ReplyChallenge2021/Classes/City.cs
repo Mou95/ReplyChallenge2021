@@ -31,6 +31,6 @@ namespace ReplyChallenge2021.Classes
         //calcolo totale punteggio finale -> somma di tutti i  bestscore dei building + reward (con condizione)
         public int CalculateScore() => reward + buildings.Sum(x => x.bestAntennaScore);
 
-
+        
     }
 }
