@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReplyChallenge2021
+namespace ReplyChallenge2021.Classes
 {
-    class Output
+    class Antenna
     {
     }
 }
