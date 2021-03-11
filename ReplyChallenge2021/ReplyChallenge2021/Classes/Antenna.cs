@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace ReplyChallenge2021.Classes
 {
     public class Antenna
     {
-        public Antenna (int id, int r, int s, int valueRange, int valueSpeed)
+        public Antenna(int id, int r, int s, int valueRange, int valueSpeed)
         {
-            id = id;
+            this.id = id;
             range = r;
             speed = s;
 
@@ -29,12 +27,50 @@ namespace ReplyChallenge2021.Classes
         public int bestX { get; set; }
         public int bestY { get; set; }
         public int bestScore { get; set; }
-        
+
         // Totale valore di building coperti data la posizione
-        // Ritorna score per ogni building coperto, e sommare il valore al totale solo se buildiing.bestValoreAntenna < valore dato dall'antenna per cui sto facendo il calcolo
+        // Ritorna score per ogni building coperto, e sommare il valore al totale solo se building.bestValoreAntenna < valore dato dall'antenna per cui sto facendo il calcolo
+        public int calculateScore(City city, List<Tuple> points, List<Building> buildings)
+        {
+            foreach (Tuple point in points)
+            {
+                int x = point.Item1;
+                int y = point.Item2;
 
+                if (city.positionAntenne[x, y] > 0)
+                {
+                    continue;
+                }
 
-        //
+                int totalScore = 0;
 
+                foreach (Building building in buildings)
+                {
+                    int dist = building.DistanzaDa(x, y);
+                    if (dist > range)
+                    {
+                        continue;
+                    }
+
+                    int score = building.ScoreForAntenna(this, x, y);
+                    if (score > 0 && score > building.bestAntennaScore)
+                    {
+                        totalScore = totalScore + score;
+                        building.bestAntennaScore = score;
+                    }
+                }
+
+                if (totalScore > bestScore)
+                {
+                    bestScore = totalScore;
+                    bestX = x;
+                    bestY = y;
+                }
+            }
+
+            city.positionAntenne[bestX, bestY] = 1;
+
+            return bestScore;
+        }
     }
 }
