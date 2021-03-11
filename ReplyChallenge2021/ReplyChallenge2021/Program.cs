@@ -13,7 +13,7 @@ namespace ReplyChallenge2021
         {
             //primo commmento di mauro
             City city = ReadFile.ReadInputFile("data_scenarios_a_example.in", 10, 10);
-
+            int finalScore = city.CalculateScore();
             
         }
     }

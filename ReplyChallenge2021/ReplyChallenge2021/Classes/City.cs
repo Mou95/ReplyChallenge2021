@@ -15,6 +15,8 @@ namespace ReplyChallenge2021.Classes
             reward = r;
             antennas = a;
             buildings = b;
+
+            positionAntenne = new int[w,h];
         }
 
         public List<Antenna> antennas { get; set; }
@@ -24,9 +26,10 @@ namespace ReplyChallenge2021.Classes
         public int reward { get; set; }
 
         //campo matrice con 0 dove non ci sono le antenne e 1 dove ci sono
+        public int[,] positionAntenne { get; set; }
 
         //calcolo totale punteggio finale -> somma di tutti i  bestscore dei building + reward (con condizione)
-
+        public int CalculateScore() => reward + buildings.Sum(x => x.bestAntennaScore);
 
 
     }
