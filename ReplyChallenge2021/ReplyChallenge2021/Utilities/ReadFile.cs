@@ -9,7 +9,7 @@ namespace ReplyChallenge2021
 {
     public class ReadFile
     {
-        public static City ReadInputFile(string filename)
+        public static City ReadInputFile(string filename, int speedMultiplier, int latencyMultiplier)
         {
             string text = System.IO.File.ReadAllText(filename);
             string[] array = text.Split(new char[] { '\n' });

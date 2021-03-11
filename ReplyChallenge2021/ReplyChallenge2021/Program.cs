@@ -12,7 +12,9 @@ namespace ReplyChallenge2021
         static void Main(string[] args)
         {
             //primo commmento di mauro
-            City city = ReadFile.ReadInputFile("data_scenarios_a_example.in");
+            City city = ReadFile.ReadInputFile("data_scenarios_a_example.in", 10, 10);
+
+            
         }
     }
 }
