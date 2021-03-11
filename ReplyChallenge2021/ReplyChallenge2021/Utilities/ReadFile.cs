@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ReplyChallenge2021
 {
@@ -53,6 +54,22 @@ namespace ReplyChallenge2021
             }
 
             return new City(w, h, r, antennas, buildings);
+        }
+
+
+
+        public static void WriteOutputFile(string filename, City city)
+        {
+            List<Antenna> antennaOutput = city.antennas.Where(x => x.bestX != -1 && x.bestY != -1).ToList();
+            string output = antennaOutput.Count() + "\n";
+            foreach (Antenna a in antennaOutput)
+            {
+                output = output + a.id + " " + a.bestX + " " + a.bestY + "\n";
+            }
+
+            StreamWriter sw = new StreamWriter(filename);
+            sw.Write(output);
+            sw.Close();
         }
     }
 }
