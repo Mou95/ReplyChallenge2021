@@ -12,7 +12,8 @@ namespace ReplyChallenge2021
         static void Main(string[] args)
         {
             //primo commmento di mauro
-            City city = ReadFile.ReadInputFile("data_scenarios_a_example.in", 1, 1, 9, 1);
+            string filename = "data_scenarios_b_mumbai.in";
+            City city = ReadFile.ReadInputFile(filename, 1, 5, 9, 1);
 
             int av = city.AvarageAntennasRange();
 
@@ -46,6 +47,7 @@ namespace ReplyChallenge2021
                 {
                     List<Building> buildings = city.BuildingInsideRange(av, point.Item1, point.Item2);
                     var singolarScore = antenna.CalculateScore(city, point, buildings);
+                    //Console.WriteLine(singolarScore);
 
                     if (singolarScore > bestScore)
                     {
@@ -74,7 +76,7 @@ namespace ReplyChallenge2021
 
             int finalScore = city.CalculateScore();
 
-            ReadFile.WriteOutputFile("first", city);
+            ReadFile.WriteOutputFile("out-" + filename, city);
             
         }
     }

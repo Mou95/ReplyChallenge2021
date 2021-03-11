@@ -16,7 +16,7 @@ namespace ReplyChallenge2021.Classes
             antennas = a;
             buildings = b;
 
-            positionAntenne = new int[w,h];
+            positionAntenne = new int[w + 1, h + 1];
         }
 
         public List<Antenna> antennas { get; set; }
