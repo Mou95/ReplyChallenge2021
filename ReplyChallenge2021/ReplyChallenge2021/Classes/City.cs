@@ -51,5 +51,15 @@ namespace ReplyChallenge2021.Classes
 
             return result;
         }
+
+        public int AvarageAntennasRange()
+        {
+            int sum = 0;
+            
+            sum = antennas.Sum(x => sum + x.range);
+
+            int average = sum/antennas.Count;
+            return average;
+        }
     }
 }
