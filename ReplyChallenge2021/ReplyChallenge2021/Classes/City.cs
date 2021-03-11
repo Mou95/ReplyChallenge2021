@@ -63,7 +63,7 @@ namespace ReplyChallenge2021.Classes
         {
             int sum = 0;
             
-            sum = antennas.Sum(x => sum + x.range);
+            sum = antennas.Sum(x => x.range);
 
             int average = sum/antennas.Count;
             return average;
