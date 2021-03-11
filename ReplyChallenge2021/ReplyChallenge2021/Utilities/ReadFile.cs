@@ -9,7 +9,7 @@ namespace ReplyChallenge2021
 {
     public class ReadFile
     {
-        public static City ReadInputFile(string filename, int speedMultiplier, int latencyMultiplier)
+        public static City ReadInputFile(string filename, int valueRange, int valueSpeed, int valueConnection, int valueLatency)
         {
             string text = System.IO.File.ReadAllText(filename);
             string[] array = text.Split(new char[] { '\n' });
@@ -37,18 +37,19 @@ namespace ReplyChallenge2021
                 Int32.TryParse(build[1], out y);
                 Int32.TryParse(build[2], out l);
                 Int32.TryParse(build[3], out c);
-                buildings.Add(new Building(x, y, l, c));
+                buildings.Add(new Building(x, y, l, c, valueConnection, valueLatency));
             }
 
             //lettura antennas
             List<Antenna> antennas = new List<Antenna>();
             for (int i = 2 + n; i < n + m + 2; i++)
             {
+                int id = i - n - 2;
                 string[] antenna = array[i].Split(new char[] { ' ' });
                 int r1 = 0, c = 0;
                 Int32.TryParse(antenna[0], out r1);
                 Int32.TryParse(antenna[1], out c);
-                antennas.Add(new Antenna(r, c));
+                antennas.Add(new Antenna(id, r, c, valueRange, valueSpeed));
             }
 
             return new City(w, h, r, antennas, buildings);
