@@ -33,10 +33,10 @@ namespace ReplyChallenge2021
             {
                 string [] build = array[i].Split(new char[] { ' ' });
                 int x = 0, y = 0, l = 0, c = 0;
-                Int32.TryParse(dati[0], out x);
-                Int32.TryParse(dati[1], out y);
-                Int32.TryParse(dati[2], out l);
-                Int32.TryParse(dati[3], out c);
+                Int32.TryParse(build[0], out x);
+                Int32.TryParse(build[1], out y);
+                Int32.TryParse(build[2], out l);
+                Int32.TryParse(build[3], out c);
                 buildings.Add(new Building(x, y, l, c));
             }
 
@@ -46,8 +46,8 @@ namespace ReplyChallenge2021
             {
                 string[] antenna = array[i].Split(new char[] { ' ' });
                 int r1 = 0, c = 0;
-                Int32.TryParse(dati[0], out r1);
-                Int32.TryParse(dati[1], out c);
+                Int32.TryParse(antenna[0], out r1);
+                Int32.TryParse(antenna[1], out c);
                 antennas.Add(new Antenna(r, c));
             }
 
