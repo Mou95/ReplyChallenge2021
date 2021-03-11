@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReplyChallenge2021.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace ReplyChallenge2021
         static void Main(string[] args)
         {
             //primo commmento di mauro
+            City city = ReadFile.ReadInputFile("data_scenarios_a_example.in");
         }
     }
 }
