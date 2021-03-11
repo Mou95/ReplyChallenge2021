@@ -40,6 +40,7 @@ namespace ReplyChallenge2021
 
             foreach(Antenna antenna in antennasOrdered)
             {
+                Console.WriteLine(antenna.id);
                 int bestX = -1;
                 int bestY = -1;
                 int bestScore = -1;
